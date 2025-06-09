@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Nails</title>
+  <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="royalnailslogo2.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      background: url('backgroundtexture.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Header with flowing background */
+    .topbar {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px 10px 100px;
+      height: 170px; 
+      overflow: hidden;
+      z-index: 100;
+    }
+    
+    .topbar-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    
+    .logo {
+      height: 200px; 
+      width: auto;
+      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    }
+    
+    .nav-link {
+      color: #ffe345;
+      text-decoration: none;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-shadow: 0 0 25px rgb(0, 0, 0);
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #ffd700;
+    }
+    
+    /* Flowing background for topbar */
+    .topbar-flow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 400%; /* Same as footer flow */
+      display: flex;
+      animation: slideLoop 20s linear infinite;
+      z-index: 1;
+    }
+    
+    .topbar-flow img {
+      height: 100%;
+      width: 5%; /* Each image takes 25% of container width */
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    
+    .under-gradient {
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(90deg, #ff8a00, #e52e71, #ff8a00);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    main {
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 3.8rem;
+      color: #ffd700;
+      margin-top: 65px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+    
+    p {
+      font-size: 1.8rem;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin: 0 auto 70px;
+    }
+    
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .service-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .service-card h3 {
+      color: #ffd700;
+      font-size: 2.3rem;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+    
+    .service-card p {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Footer with flowing background */
+    .footer-container {
+      position: relative;
+      height: 300px;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 80px;
+    }
+    
+    .footer-flow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 400%;
+      display: flex;
+      animation: slideLoop 1s linear infinite;
+      z-index: 1;
+    }
+    
+    .footer-flow img {
+      height: 100%;
+      width: 50%;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    
+    .footer-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0;
+      z-index: 20; 
+      background: rgba(0, 0, 0, 0.6);
+    }
+    
+    .footer-logo {
+      height: 40px;
+      margin-right: 25px;
+      filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.8));
+    }
+    
+    .copyright {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #ffd700;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+    
+    .content-spacer {
+      height: 1000px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+      margin: 40px -20px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .floating-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      color: rgba(255, 255, 255, 0.1);
+      text-align: center;
+      width: 100%;
+    }
+    
+    /* Animation keyframes - same for both flows */
+    @keyframes slideLoop {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    /* Media Queries */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .logo {
+        height: 120px;
+      }
+      
+      .topbar-content {
+        gap: 15px;
+      }
+      
+      .nav-link {
+        font-size: 1.8rem; 
+      }
+
+      .topbar {
+        height: 140px;
+      }
+
+      .gallery img {
+        height: 350px;
+      }
+
+      .scroll-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 1.5rem;
+      }
+
+    .business-hours-card,
+    .service-category-card {
+        padding: 20px;
+      }
+      
+      .business-hours-card h3,
+      .service-category-card h3 {
+        font-size: 1.8rem;
+      }
+      
+      .day, 
+      .hours,
+      .service-name,
+      .service-price {
+        font-size: 1.1rem;
+      }
+
+      .policy-item {
+        font-size: 1.4rem;
+      }
+
+      .map-iframe, .fb-page {
+        height: 350px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .logo {
+        height: 100px;
+      }
+      
+      .footer-overlay {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .footer-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+      
+      .topbar {
+        height: 120px;
+        flex-direction: column;
+        justify-content: center;
+      }
+      
+      .topbar-content {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .nav-link {
+        font-size: 1.5rem; 
+      }
+
+      .gallery img {
+        height: 200px;
+      }
+
+      .hours-grid,
+      .service-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .business-hours-card h3,
+      .service-category-card h3 {
+        font-size: 1.6rem;
+      }
+
+      .policy-item {
+        font-size: 1.2rem;
+      }
+
+      .map-iframe, .fb-page {
+        height: 300px;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+  <!-- Header with flowing background -->
+  <header class="topbar">
+    <div class="topbar-flow">
+      <img src="topbar.png" alt="Nail design">
+      <img src="topbar2.png" alt="Nail design">
+      <img src="topbar3.png" alt="Nail design">
+      <img src="topbar4.png" alt="Nail design">
+      <img src="topbar5.png" alt="Nail design">
+      <img src="topbar6.png" alt="Nail design">
+      <img src="topbar7.png" alt="Nail design">
+      <img src="topbar8.png" alt="Nail design">
+      <img src="topbar.png" alt="Nail design">
+      <img src="topbar2.png" alt="Nail design">
+      <img src="topbar3.png" alt="Nail design">
+      <img src="topbar4.png" alt="Nail design">
+      <img src="topbar5.png" alt="Nail design">
+      <img src="topbar6.png" alt="Nail design">
+      <img src="topbar7.png" alt="Nail design">
+      <img src="topbar8.png" alt="Nail design">
+    </div>
+
+    <div class="topbar-content">
+      <img src="royalnailslogo.png" alt="Royal Nails Logo" class="logo">
+      <a href="#" class="nav-link" id="home-link">Home</a>
+      <a href="#" class="nav-link" id="services-link">Services</a>
+      <a href="#" class="nav-link" id="policy-link">Policy</a>
+      <a href="#" class="nav-link" id="contact-link">Contact</a>
+    </div>
+    
+    <div class="topbar-address">
+      913 N Perkins Rd<br>
+      Stillwater, OK 74075<br>
+      (405) 880-6817
+    </div>
+  </header>
+
+  <div class="under-gradient"></div>
+
+  <main id="main-content">
+    <!-- Home content (default) -->
+    <div id="home-content">
+      <h1>Welcome to Royal Nails</h1>
+      <p>Experience luxury nail care with our premium services and products. Our skilled technicians are dedicated to making your nails look stunning.</p>
+      
+      <div class="services">
+        <div class="service-card">
+          <h3>Manicure</h3>
+          <p>Revitalize your hands with our luxurious manicure treatments that leave your nails looking beautiful and healthy.</p>
+        </div>
+        <div class="service-card">
+          <h3>Pedicure</h3>
+          <p>Pamper your feet with our relaxing pedicure services that combine skincare with beautiful nail art.</p>
+        </div>
+        <div class="service-card">
+          <h3>Nail Art</h3>
+          <p>Express your style with our custom nail art designs created by our talented nail artists.</p>
+        </div>
+      </div>
+      
+      <div class="gallery-container">
+        <h2>Our Work</h2>
+        <div class="gallery-wrapper">
+          <button class="scroll-btn left-scroll-btn">&lt;</button>
+          <div class="gallery">
+            <img src="gallery1.png">
+            <img src="gallery2.png">
+            <img src="gallery3.png">
+            <img src="gallery4.png">
+            <img src="gallery5.png">
+            <img src="gallery6.png">
+            <img src="gallery7.png">
+            <img src="gallery8.png">
+          </div>
+          <button class="scroll-btn right-scroll-btn">&gt;</button>
+        </div>
+      </div>
+
+      <div class="business-hours-container">
+        <div class="business-hours-card">
+          <h3>Business Hours</h3>
+          <div class="hours-grid">
+            <div class="day">Monday</div>
+            <div class="hours">9:30 AM - 7:30 PM</div>
+            
+            <div class="day">Tuesday</div>
+            <div class="hours">9:30 AM - 7:30 PM</div>
+            
+            <div class="day">Wednesday</div>
+            <div class="hours">9:30 AM - 7:30 PM</div>
+            
+            <div class="day">Thursday</div>
+            <div class="hours">9:30 AM - 7:30 PM</div>
+            
+            <div class="day">Friday</div>
+            <div class="hours">9:30 AM - 7:30 PM</div>
+            
+            <div class="day">Saturday</div>
+            <div class="hours">9:30 AM - 6:00 PM</div>
+            
+            <div class="day">Sunday</div>
+            <div class="hours">Closed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services content (hidden by default) -->
+    <div id="services-content" style="display: none;">
+      <h1>Our Services</h1>
+      <p>Explore our wide range of premium nail services designed to pamper and beautify.</p>
+      
+      <!-- Nail Enhancement Section -->
+      <div class="service-category-container">
+        <div class="service-category-card">
+          <h3>Nail Enhancement</h3>
+          <div class="service-grid">
+            <div class="service-name">French Tip</div>
+            <div class="service-name">Solar</div>
+            <div class="service-name">Dipping</div>
+            <div class="service-name">Solar Color</div>
+            <div class="service-name">Ombre</div>
+            <div class="service-name">Solar Pink & White</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Shellac Nails Section -->
+      <div class="service-category-container">
+        <div class="service-category-card">
+          <h3>Shellac Nails</h3>
+          <div class="service-grid">
+            <div class="service-name">Shellac - Hands</div>
+            <div class="service-name">Shellac - Toes</div>
+            <div class="service-name">Shellac French</div>
+            <div class="service-name">Manicure - Color</div>
+            <div class="service-name">Manicure - French</div>
+            <div class="service-name">Shellac on Acrylic</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Pedicure Section -->
+      <div class="service-category-container">
+        <div class="service-category-card">
+          <h3>Pedicure</h3>
+          <div class="service-grid">
+            <div class="service-name">Normal Pedicure -- [25-30 Mins]</div>
+            <div class="service-name">Warm Pedicure -- [35-35 Mins]</div>
+            <div class="service-name">Relaxing Pedicure -- [40-45 Mins]</div>
+            <div class="service-name">Deluxe Pedicure -- [50-55 Mins]</div>
+            <div class="service-name">Elegant Pedicure -- [60-70 Mins]</div> 
+            <div class="service-name">Royal Pedicure -- [75-85 Mins]</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Additional Services Section -->
+      <div class="service-category-container">
+        <div class="service-category-card">
+          <h3>Additional Services</h3>
+          <div class="service-grid">
+            <div class="service-name">Cut Down</div>
+            <div class="service-name">Nail Repair</div>
+            <div class="service-name">French Tip</div>
+            <div class="service-name">Polish Change - [Hands]</div>
+            <div class="service-name">Polish Change - [Toes]</div>
+            <div class="service-name">Take Off</div>
+            <div class="service-name">Take Off & Re-Do</div>
+            <div class="service-name">Nail Shaping & Length</div>
+            <div class="service-name">+3/+4/+5 Colors</div>
+            <div class="service-name">Cat Eye Gel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Policy content (hidden by default) -->
+    <div id="policy-content" style="display: none;">
+      <h1>Our Policies</h1>
+      <p>Royal Nails has been known for our, professional, and high-quality services. Our highly trained and qualified staff ensures that you can trust our services. For the best results and your safety, we use only branded and high-grade products. We take hygiene and sanitation standards seriously, and all precautions are taken to garuntee it. With a releaxing atmosphere and a wide range of quality services, you are sure to have an amazing experience at Royal Nails.</p>
+      
+      <!-- General Policies Section -->
+      <div class="service-category-container">
+        <div class="service-category-card">
+          <h3>General Policies</h3>
+          <div class="policy-grid">
+            <div class="policy-item">We have the right to refuse or stop service for any person who is rude, or comes in with a bad attitude.</div>
+            <div class="policy-item">We are not responsible for lost or stolen personal items and gift cards.</div>
+            <div class="policy-item">You will be fully responsible of your personal belongings during your visit. You will have to pay compensation if you damage any salon products during the visit.</div>
+            <div class="policy-item">Please do not take any pictures in the salon without our consent or knowledge.</div>
+            <div class="policy-item">If you are coming with kids, we request you to take care of them.</div>
+            <div class="policy-item">If you are unsatisfied with our service, please speak with the manager immediately, and we will do our best to remedy the situation.</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Cancellation Policy Section -->
+      <div class="service-category-container">
+        <div class="service-category-card">
+          <h3>Cancellation Policy</h3>
+          <div class="policy-grid">
+            <div class="policy-item">Please give us advance notice for canceling appointments.</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Health & Safety Section -->
+      <div class="service-category-container">
+        <div class="service-category-card">
+          <h3>Health & Safety</h3>
+          <div class="policy-grid">
+            <div class="policy-item">Health issues or diabetes must be communicated prior to service.</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Payment Policies Section -->
+      <div class="service-category-container">
+        <div class="service-category-card">
+          <h3>Payment Policies</h3>
+          <div class="policy-grid">
+            <div class="policy-item">We do not provide refunds on services. However, we will try our best to address your issues with the services.</div>
+            <div class="policy-item">Our prices are available on the menu - [In store]. Please confirm the prices with the nail techs before recieving the services.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact content (hidden by default) -->
+    <div id="contact-content" style="display: none;">
+      <h1>Contact Us</h1>
+      <p>Visit us at our location, connect with us on Facebook, or give us a call to schedule an appointment.</p>
+      
+      <!-- Contact Info Section -->
+      <div class="service-category-container">
+        <div class="service-category-card">
+          <h3>Contact Information</h3>
+          <div class="policy-grid">
+            <div class="policy-item">
+              <strong>Address:</strong> 913 N Perkins Rd, Stillwater, OK 74075
+            </div>
+            <div class="policy-item">
+              <strong>Phone:</strong> (405) 880-6817
+            </div>
+            <div class="policy-item">
+              <strong>Hours:</strong> Monday-Friday 9:30 AM - 7:30 PM, Saturday 9:30 AM - 6:00 PM, Sunday Closed
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Facebook Section -->
+      <div class="service-category-container">
+        <div class="service-category-card">
+          <h3>Follow Us!</h3>
+          <div class="social-container">
+            <a href="https://www.facebook.com/RoyalNailsOklahoma/" target="_blank" class="social-link">
+              <img src="fbicon.png" alt="Visit our Facebook page" class="social-image">
+              <div class="social-overlay">
+                <span class="social-text">Visit Our Facebook Page</span>
+                <i class="social-icon">f</i> <!-- This is a simple Facebook "f" logo -->
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Maps Section -->
+      <div class="service-category-container">
+        <div class="service-category-card">
+          <h3>Our Location</h3>
+          <div class="map-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3236.1332244!2d-97.0510253!3d36.1332244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b10a2d3f16ef5b%3A0x7b0b430accf36806!2sRoyal%20Nails!5e0!3m2!1sen!2sus!4v1717931234567!5m2!1sen!2sus" 
+              width="100%" 
+              height="450" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              class="map-iframe">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<div class="above-footer-gradient">
+  <div class="under-gradient"></div>
+</div>
+
+<!-- Footer with flowing background -->
+<div class="footer-container">
+  <div class="footer-flow">
+      <img src="topbar.png" alt="Nail design">
+      <img src="topbar4.png" alt="Nail design">
+      <img src="topbar7.png" alt="Nail design">
+      <img src="topbar8.png" alt="Nail design">
+  </div>
+  
+  <div class="footer-overlay">
+    <div class="footer-content">
+      <img src="royalnailslogo.png" alt="Logo" class="footer-logo">
+      <div class="copyright">
+        Copyright © 2025 Royal Nails. All rights reserved.
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+  .above-footer-gradient {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .under-gradient {
+    width: 100%;
+    height: 12px;
+    background: linear-gradient(90deg, #ff8a00, #e52e71, #ff8a00);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .footer-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 1px;
+  }
+  
+  .footer-flow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 400%;
+    display: flex;
+    animation: slideLoop 20s linear infinite;
+    z-index: 1;
+  }
+  
+  .footer-flow img {
+    height: 100%;
+    width: 25%;
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+  
+  .footer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .footer-logo {
+    height: 250px;
+    width: auto;
+    margin-bottom: 2px;
+    filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.8));
+  }
+  
+  .topbar-address {
+    position: relative;
+    z-index: 10;
+    color: white;
+    text-align: right;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    text-shadow: 0 0 5px rgba(0,0,0,0.8);
+    padding-right: 30px;
+    margin-left: 25px; 
+  }
+
+  .copyright {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffe449;
+    margin-top: -45px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  }
+
+  .gallery-container {
+    margin: 80px auto;
+    max-width: 1250px;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .gallery-container h2 {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  }
+
+  .gallery-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .gallery {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 25px;
+    padding: 20px 0;
+    width: 100%;
+    margin: 0 5px;
+  }
+
+  .gallery img {
+    scroll-snap-align: start;
+    height: 470px;
+    width: auto;
+    max-width: 470px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 5px solid rgb(202, 172, 0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.03);
+  }
+
+  .scroll-btn {
+    position: relative;
+    background: none;
+    border: none;
+    color: #ffd700;
+    font-size: 5rem;
+    width: 70px;
+    height: 50px;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s ease;
+  }
+
+  .scroll-btn:hover {
+    transform: scale(1.2);
+  }
+
+  /* Hide scrollbar */
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .business-hours-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+  
+  .business-hours-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 50px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .business-hours-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .business-hours-card h3 {
+    color: #ffd700;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  }
+  
+  .hours-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    text-align: left;
+    margin: 0 auto;
+    width: fit-content;
+  }
+  
+  .day {
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    font-size: 2rem;
+  }
+  
+  .hours {
+    color: white;
+    font-size: 2rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Service Categories Styles */
+  .service-category-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+  
+  .service-category-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 50px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .service-category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .service-category-card h3 {
+    color: #ffd700;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  }
+  
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    text-align: left;
+    margin: 0 auto;
+    width: fit-content;
+  }
+  
+  .service-name {
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    font-size: 2rem;
+  }
+  .policy-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  .policy-item {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    padding: 0 20px;
+  }
+
+.map-container {
+  margin: 20px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.map-iframe, .fb-page {
+  display: block;
+  border: 5px solid #6f00ff;
+  width: 100%;
+}
+
+.social-container {
+  margin: 20px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.social-link {
+  display: block;
+  position: relative;
+  text-decoration: none;
+}
+
+.social-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 5px solid #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.social-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.social-text {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.social-icon {
+  color: #4267B2; /* Facebook blue */
+  background: white;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.social-link:hover .social-image {
+  transform: scale(1.03);
+}
+
+.social-link:hover .social-overlay {
+  background: rgba(0, 0, 0, 0.8);
+}
+  
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const gallery = document.querySelector('.gallery');
+    const leftBtn = document.querySelector('.left-scroll-btn');
+    const rightBtn = document.querySelector('.right-scroll-btn');
+
+    leftBtn.addEventListener('click', () => {
+      gallery.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+
+    rightBtn.addEventListener('click', () => {
+      gallery.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+
+    // Navigation between home, services and policy
+    const homeLink = document.getElementById('home-link');
+    const servicesLink = document.getElementById('services-link');
+    const policyLink = document.getElementById('policy-link');
+    const contactLink = document.getElementById('contact-link');
+
+    const homeContent = document.getElementById('home-content');
+    const servicesContent = document.getElementById('services-content');
+    const policyContent = document.getElementById('policy-content');
+    const contactContent = document.getElementById('contact-content');
+
+    function showHome() {
+      homeContent.style.display = 'block';
+      servicesContent.style.display = 'none';
+      policyContent.style.display = 'none';
+      contactContent.style.display = 'none';
+    }
+
+    function showServices() {
+      homeContent.style.display = 'none';
+      servicesContent.style.display = 'block';
+      policyContent.style.display = 'none';
+      contactContent.style.display = 'none';
+    }
+
+    function showPolicy() {
+      homeContent.style.display = 'none';
+      servicesContent.style.display = 'none';
+      policyContent.style.display = 'block';
+      contactContent.style.display = 'none';
+    }
+
+    function showContact() {
+      homeContent.style.display = 'none';
+      servicesContent.style.display = 'none';
+      policyContent.style.display = 'none';
+      contactContent.style.display = 'block';
+    }
+
+    homeLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      showHome();
+    });
+
+    servicesLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      showServices();
+    });
+
+    policyLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPolicy();
+    });
+
+    contactLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      showContact();
+    });
+
+    // Initialize with home content shown
+    showHome();
+  });
+</script>
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v18.0'
+    });
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+</body>
+</html>
