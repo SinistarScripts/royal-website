@@ -59,7 +59,7 @@ body {
   top: 0;
   left: 0;
   height: 100%;
-  width: 400%; 
+  width: 400%; /* Same as footer flow */
   display: flex;
   animation: slideLoop 20s linear infinite;
   z-index: 1;
@@ -67,7 +67,7 @@ body {
 
 .topbar-flow img {
   height: 100%;
-  width: 5%; 
+  width: 5%; /* Each image takes 25% of container width */
   flex-shrink: 0;
   object-fit: cover;
 }
@@ -243,7 +243,7 @@ p {
   }
 
   .gallery img {
-    height: 350px;
+    height: 300px;
   }
 
   .scroll-btn {
@@ -254,23 +254,38 @@ p {
 
   .business-hours-card,
   .service-category-card {
-      padding: 20px;
+      padding: 25px;
+      max-width: 90%;
     }
     
     .business-hours-card h3,
     .service-category-card h3 {
-      font-size: 1.8rem;
+      font-size: 2rem;
+      margin-bottom: 25px;
     }
     
-    .day, 
+    .hours-grid,
+    .service-grid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .day,
     .hours,
     .service-name,
     .service-price {
-      font-size: 1.1rem;
+      font-size: 1.5rem;
+      text-align: center;
     }
 
+    .policy-grid {
+      gap: 15px;
+    }
+    
     .policy-item {
       font-size: 1.4rem;
+      line-height: 1.5;
+      padding: 0 15px;
     }
 
     .map-iframe, .fb-page {
@@ -279,61 +294,171 @@ p {
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 2rem;
+  /* Header adjustments */
+  .topbar {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 20px;
+    text-align: center;
+  }
+  
+  .topbar-content {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
   }
   
   .logo {
     height: 100px;
-  }
-  
-  .footer-overlay {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .footer-logo {
-    margin-right: 0;
     margin-bottom: 10px;
   }
   
-  .topbar {
-    height: 120px;
-    flex-direction: column;
-    justify-content: center;
+  .nav-link {
+    font-size: 1.5rem;
+    display: block;
+    padding: 5px 0;
   }
   
-  .topbar-content {
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-
-  .nav-link {
-    font-size: 1rem; 
-  }
-
-  .gallery img {
-    height: 200px;
-  }
-
-  .hours-grid,
-  .service-grid {
-    grid-template-columns: 1fr;
+  .topbar-address {
     text-align: center;
+    padding: 10px 0;
+    font-size: 1rem;
+    margin-left: 0;
+  }
+  
+  /* Main content adjustments */
+  h1 {
+    font-size: 2rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Services grid */
+  .services {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .service-card {
+    padding: 20px;
+  }
+  
+  .service-card h3 {
+    font-size: 1rem;
+  }
+  
+  .service-card p {
+    font-size: 1rem;
+  }
+  
+  /* Gallery adjustments */
+  .gallery-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  .gallery img {
+    height: 50px;
+    max-width: 250px;
+  }
+  
+  .scroll-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  /* Business hours */
+  .business-hours-card,
+  .service-category-card {
+    padding: 20px;
   }
   
   .business-hours-card h3,
   .service-category-card h3 {
     font-size: 1rem;
+    margin-bottom: 20px;
   }
-
-  .policy-item {
+  
+  .hours-grid,
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .day,
+  .hours,
+  .service-name,
+  .service-price {
     font-size: 1rem;
   }
-
+  
+  .service-name,
+  .service-price {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  /* Footer adjustments */
+  .footer-container {
+    height: 200px;
+    margin-top: 40px;
+  }
+  
+  .footer-overlay {
+    flex-direction: column;
+    padding: 15px 0;
+  }
+  
+  .footer-logo {
+    height: 30px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .copyright {
+    font-size: 0.9rem;
+    margin-top: 0;
+  }
+  
+  /* Policy items */
+  .policy-grid {
+    gap: 15px;
+  }
+  
+  .policy-item {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  
+  /* Map and social */
   .map-iframe, .fb-page {
-    height: 300px;
+    height: 250px;
+  }
+  
+  .social-text {
+    font-size: 1.2rem;
+  }
+  
+  .social-icon {
+    font-size: 1.2rem;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+  
+  /* Content spacer */
+  .content-spacer {
+    height: 500px;
+    margin: 20px -10px;
+  }
+  
+  .floating-text {
+    font-size: 1.2rem;
   }
 }
 
@@ -664,7 +789,7 @@ p {
 }
 
 .social-icon {
-  color: #4267B2; 
+  color: #4267B2; /* Facebook blue */
   background: white;
   font-family: Arial, sans-serif;
   font-weight: bold;
