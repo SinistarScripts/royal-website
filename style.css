@@ -59,7 +59,7 @@ body {
   top: 0;
   left: 0;
   height: 100%;
-  width: 400%; /* Same as footer flow */
+  width: 400%; 
   display: flex;
   animation: slideLoop 20s linear infinite;
   z-index: 1;
@@ -67,7 +67,7 @@ body {
 
 .topbar-flow img {
   height: 100%;
-  width: 5%; /* Each image takes 25% of container width */
+  width: 5%; 
   flex-shrink: 0;
   object-fit: cover;
 }
@@ -310,7 +310,7 @@ p {
   }
 
   .nav-link {
-    font-size: 1.5rem; 
+    font-size: 1rem; 
   }
 
   .gallery img {
@@ -325,11 +325,11 @@ p {
   
   .business-hours-card h3,
   .service-category-card h3 {
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
 
   .policy-item {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .map-iframe, .fb-page {
@@ -664,7 +664,7 @@ p {
 }
 
 .social-icon {
-  color: #4267B2; /* Facebook blue */
+  color: #4267B2; 
   background: white;
   font-family: Arial, sans-serif;
   font-weight: bold;
