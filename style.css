@@ -221,6 +221,7 @@ p {
 }
 
 /* Media Queries */
+/* 768px Media Query */
 @media (max-width: 768px) {
   h1 {
     font-size: 2.5rem;
@@ -254,45 +255,46 @@ p {
 
   .business-hours-card,
   .service-category-card {
-      padding: 25px;
-      max-width: 90%;
-    }
-    
-    .business-hours-card h3,
-    .service-category-card h3 {
-      font-size: 2rem;
-      margin-bottom: 25px;
-    }
-    
-    .hours-grid,
-    .service-grid {
-      grid-template-columns: 1fr;
-      gap: 15px;
-    }
+    padding: 25px;
+    max-width: 90%;
+  }
+  
+  .business-hours-card h3,
+  .service-category-card h3 {
+    font-size: 2rem !important;
+    margin-bottom: 25px;
+  }
+  
+  .hours-grid,
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
 
-    .day,
-    .hours,
-    .service-name,
-    .service-price {
-      font-size: 1.5rem;
-      text-align: center;
-    }
+  .day,
+  .hours,
+  .service-name,
+  .service-price {
+    font-size: 1.3rem !important;
+    text-align: center;
+  }
 
-    .policy-grid {
-      gap: 15px;
-    }
-    
-    .policy-item {
-      font-size: 1.4rem;
-      line-height: 1.5;
-      padding: 0 15px;
-    }
+  .policy-grid {
+    gap: 15px;
+  }
+  
+  .policy-item {
+    font-size: 1.2rem !important;
+    line-height: 1.5;
+    padding: 0 15px;
+  }
 
-    .map-iframe, .fb-page {
-      height: 350px;
-    }
+  .map-iframe, .fb-page {
+    height: 350px;
+  }
 }
 
+/* 480px Media Query */
 @media (max-width: 480px) {
   /* Header adjustments */
   .topbar {
@@ -349,21 +351,36 @@ p {
   }
   
   .service-card h3 {
-    font-size: 1rem;
+    font-size: 1.8rem !important;
   }
   
   .service-card p {
-    font-size: 1rem;
+    font-size: 1.3rem !important;
   }
   
   /* Gallery adjustments */
+  .gallery-container {
+    margin: 40px auto;
+  }
+  
   .gallery-container h2 {
     font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .gallery-wrapper {
+    margin: 0;
+  }
+  
+  .gallery {
+    padding: 15px 0;
+    gap: 15px;
   }
   
   .gallery img {
-    height: 50px;
-    max-width: 250px;
+    height: 240px !important;
+    max-width: 350px;
+    min-width: 240px;
   }
   
   .scroll-btn {
@@ -372,7 +389,13 @@ p {
     font-size: 1.2rem;
   }
   
-  /* Business hours */
+  .scroll-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  /* Business hours and service cards */
   .business-hours-card,
   .service-category-card {
     padding: 20px;
@@ -380,7 +403,7 @@ p {
   
   .business-hours-card h3,
   .service-category-card h3 {
-    font-size: 1rem;
+    font-size: 1.6rem !important;
     margin-bottom: 20px;
   }
   
@@ -394,13 +417,19 @@ p {
   .hours,
   .service-name,
   .service-price {
-    font-size: 1rem;
+    font-size: 1.2rem !important;
+    text-align: center;
   }
   
-  .service-name,
-  .service-price {
-    font-size: 1rem;
-    text-align: center;
+  /* Policy items */
+  .policy-grid {
+    gap: 15px;
+  }
+  
+  .policy-item {
+    font-size: 1.2rem !important;
+    line-height: 1.4;
+    padding: 0 10px;
   }
   
   /* Footer adjustments */
@@ -423,16 +452,6 @@ p {
   .copyright {
     font-size: 0.9rem;
     margin-top: 0;
-  }
-  
-  /* Policy items */
-  .policy-grid {
-    gap: 15px;
-  }
-  
-  .policy-item {
-    font-size: 1rem;
-    line-height: 1.4;
   }
   
   /* Map and social */
